@@ -1,18 +1,18 @@
 package com.ex.backend.domain.sellers.entity;
 
+import com.ex.backend.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sellers")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class SellersEntity {
+public class SellersEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,9 +35,6 @@ public class SellersEntity {
 
     @Column(name = "contact_phone", length = 20)
     private String contactPhone;
-
-//    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-//    private LocalDateTime createdAt;
 
 
 

@@ -1,5 +1,6 @@
 package com.ex.backend.domain.product_images.entity;
 
+import com.ex.backend.common.BaseEntity;
 import com.ex.backend.domain.products.entity.ProductsEntity;
 import com.ex.backend.domain.product_options.entity.ProductOptionsEntity;
 import jakarta.persistence.*;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "product_images")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ProductImagesEntity {
+public class ProductImagesEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,17 +1,17 @@
 package com.ex.backend.domain.users.entity;
 
+import com.ex.backend.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class UsersEntity {
+public class UsersEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,14 +26,11 @@ public class UsersEntity {
     @Column(name = "avatar_url", length = 255)
     private String avatarUrl;
 
-    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime createdAt;
 
     public UsersEntity(String name, String email, String avatarUrl) {
         this.name = name;
         this.email = email;
         this.avatarUrl = avatarUrl;
-        this.createdAt = LocalDateTime.now();
     }
 
     public void update(String name, String email, String avatarUrl) {

@@ -1,5 +1,6 @@
 package com.ex.backend.domain.product_prices.entity;
 
+import com.ex.backend.common.BaseEntity;
 import com.ex.backend.domain.products.entity.ProductsEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
 @Table(name = "product_prices")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ProductPricesEntity {
+public class ProductPricesEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,6 +1,7 @@
 package com.ex.backend.domain.brands.entity;
 
 
+import com.ex.backend.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "brands")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BrandsEntity {
+public class BrandsEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

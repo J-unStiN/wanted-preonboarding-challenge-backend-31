@@ -1,5 +1,6 @@
 package com.ex.backend.domain.products.entity;
 
+import com.ex.backend.common.BaseEntity;
 import com.ex.backend.domain.brands.entity.BrandsEntity;
 import com.ex.backend.domain.sellers.entity.SellersEntity;
 import jakarta.persistence.*;
@@ -17,7 +18,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
-public class ProductsEntity {
+public class ProductsEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,14 +35,6 @@ public class ProductsEntity {
 
     @Column(name = "full_description", columnDefinition = "TEXT")
     private String fullDescription;
-
-//    @CreatedDate
-//    @Column(name = "created_at", updatable = false)
-//    private LocalDateTime createdAt;
-//
-//    @LastModifiedDate
-//    @Column(name = "updated_at")
-//    private LocalDateTime updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seller_id")

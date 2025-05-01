@@ -1,5 +1,6 @@
 package com.ex.backend.domain.product_option_groups.entity;
 
+import com.ex.backend.common.BaseEntity;
 import com.ex.backend.domain.products.entity.ProductsEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "product_option_groups")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ProductOptionGroupsEntity {
+public class ProductOptionGroupsEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

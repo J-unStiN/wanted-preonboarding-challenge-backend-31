@@ -1,18 +1,17 @@
 package com.ex.backend.domain.categories.entity;
 
+import com.ex.backend.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "categories")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class CategoriesEntity {
+public class CategoriesEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,9 +29,6 @@ public class CategoriesEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private CategoriesEntity parent;
-
-    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CategoriesEntity> children = new ArrayList<>();
 
     @Column(name = "level", nullable = false)
     private Integer level;
@@ -60,17 +56,4 @@ public class CategoriesEntity {
         this.imageUrl = imageUrl;
     }
 
-    public void addChild(CategoriesEntity child) {
-        this.children.add(child);
-        child.setParent(this);
-    }
-
-    public void removeChild(CategoriesEntity child) {
-        this.children.remove(child);
-        child.setParent(null);
-    }
-
-    protected void setParent(CategoriesEntity parent) {
-        this.parent = parent;
-    }
 }

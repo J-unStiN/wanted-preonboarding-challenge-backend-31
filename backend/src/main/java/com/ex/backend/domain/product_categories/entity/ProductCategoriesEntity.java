@@ -1,5 +1,6 @@
 package com.ex.backend.domain.product_categories.entity;
 
+import com.ex.backend.common.BaseEntity;
 import com.ex.backend.domain.categories.entity.CategoriesEntity;
 import com.ex.backend.domain.products.entity.ProductsEntity;
 import jakarta.persistence.*;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "product_categories")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ProductCategoriesEntity {
+public class ProductCategoriesEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
