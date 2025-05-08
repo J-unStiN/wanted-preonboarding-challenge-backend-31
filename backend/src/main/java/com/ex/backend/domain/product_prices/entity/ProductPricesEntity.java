@@ -3,16 +3,16 @@ package com.ex.backend.domain.product_prices.entity;
 import com.ex.backend.common.BaseEntity;
 import com.ex.backend.domain.products.entity.ProductsEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 
+@Builder
 @Entity
 @Table(name = "product_prices")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class ProductPricesEntity extends BaseEntity {
 
     @Id
@@ -38,15 +38,15 @@ public class ProductPricesEntity extends BaseEntity {
     @Column(name = "tax_rate", precision = 5, scale = 2)
     private BigDecimal taxRate;
 
-    public ProductPricesEntity(ProductsEntity product, BigDecimal basePrice, BigDecimal salePrice,
-                            BigDecimal costPrice, String currency, BigDecimal taxRate) {
-        this.product = product;
-        this.basePrice = basePrice;
-        this.salePrice = salePrice;
-        this.costPrice = costPrice;
-        this.currency = currency != null ? currency : "KRW";
-        this.taxRate = taxRate;
-    }
+//    public ProductPricesEntity(ProductsEntity product, BigDecimal basePrice, BigDecimal salePrice,
+//                            BigDecimal costPrice, String currency, BigDecimal taxRate) {
+//        this.product = product;
+//        this.basePrice = basePrice;
+//        this.salePrice = salePrice;
+//        this.costPrice = costPrice;
+//        this.currency = currency != null ? currency : "KRW";
+//        this.taxRate = taxRate;
+//    }
 
     public void update(BigDecimal basePrice, BigDecimal salePrice, BigDecimal costPrice,
                      String currency, BigDecimal taxRate) {

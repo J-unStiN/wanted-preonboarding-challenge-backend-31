@@ -4,19 +4,19 @@ import com.ex.backend.common.BaseEntity;
 import com.ex.backend.domain.brands.entity.BrandsEntity;
 import com.ex.backend.domain.sellers.entity.SellersEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
+@Builder
 @Entity
 @Table(name = "products")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class ProductsEntity extends BaseEntity {
 
@@ -47,16 +47,16 @@ public class ProductsEntity extends BaseEntity {
     @Column(name = "status", nullable = false, length = 20)
     private String status;
 
-    public ProductsEntity(String name, String slug, String shortDescription, String fullDescription,
-                       SellersEntity seller, BrandsEntity brand, String status) {
-        this.name = name;
-        this.slug = slug;
-        this.shortDescription = shortDescription;
-        this.fullDescription = fullDescription;
-        this.seller = seller;
-        this.brand = brand;
-        this.status = status;
-    }
+//    public ProductsEntity(String name, String slug, String shortDescription, String fullDescription,
+//                       SellersEntity seller, BrandsEntity brand, String status) {
+//        this.name = name;
+//        this.slug = slug;
+//        this.shortDescription = shortDescription;
+//        this.fullDescription = fullDescription;
+//        this.seller = seller;
+//        this.brand = brand;
+//        this.status = status;
+//    }
 
     public void update(String name, String slug, String shortDescription, String fullDescription,
                      SellersEntity seller, BrandsEntity brand, String status) {

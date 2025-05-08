@@ -3,16 +3,16 @@ package com.ex.backend.domain.product_details.entity;
 import com.ex.backend.common.BaseEntity;
 import com.ex.backend.domain.products.entity.ProductsEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 
+@Builder
 @Entity
 @Table(name = "product_details")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class ProductDetailsEntity extends BaseEntity {
 
     @Id
@@ -44,18 +44,18 @@ public class ProductDetailsEntity extends BaseEntity {
     @Column(name = "additional_info", columnDefinition = "JSONB")
     private String additionalInfo;
 
-    public ProductDetailsEntity(ProductsEntity product, BigDecimal weight, String dimensions,
-                                String materials, String countryOfOrigin, String warrantyInfo,
-                                String careInstructions, String additionalInfo) {
-        this.product = product;
-        this.weight = weight;
-        this.dimensions = dimensions;
-        this.materials = materials;
-        this.countryOfOrigin = countryOfOrigin;
-        this.warrantyInfo = warrantyInfo;
-        this.careInstructions = careInstructions;
-        this.additionalInfo = additionalInfo;
-    }
+//    public ProductDetailsEntity(ProductsEntity product, BigDecimal weight, String dimensions,
+//                                String materials, String countryOfOrigin, String warrantyInfo,
+//                                String careInstructions, String additionalInfo) {
+//        this.product = product;
+//        this.weight = weight;
+//        this.dimensions = dimensions;
+//        this.materials = materials;
+//        this.countryOfOrigin = countryOfOrigin;
+//        this.warrantyInfo = warrantyInfo;
+//        this.careInstructions = careInstructions;
+//        this.additionalInfo = additionalInfo;
+//    }
 
     public void update(BigDecimal weight, String dimensions, String materials,
                        String countryOfOrigin, String warrantyInfo, String careInstructions,

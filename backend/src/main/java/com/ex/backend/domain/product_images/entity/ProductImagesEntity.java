@@ -4,14 +4,14 @@ import com.ex.backend.common.BaseEntity;
 import com.ex.backend.domain.products.entity.ProductsEntity;
 import com.ex.backend.domain.product_options.entity.ProductOptionsEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+@Builder
 @Entity
 @Table(name = "product_images")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class ProductImagesEntity extends BaseEntity {
 
     @Id
@@ -38,15 +38,15 @@ public class ProductImagesEntity extends BaseEntity {
     @JoinColumn(name = "option_id")
     private ProductOptionsEntity option;
 
-    public ProductImagesEntity(ProductsEntity product, String url, String altText,
-                            Boolean isPrimary, Integer displayOrder, ProductOptionsEntity option) {
-        this.product = product;
-        this.url = url;
-        this.altText = altText;
-        this.isPrimary = isPrimary != null ? isPrimary : false;
-        this.displayOrder = displayOrder != null ? displayOrder : 0;
-        this.option = option;
-    }
+//    public ProductImagesEntity(ProductsEntity product, String url, String altText,
+//                            Boolean isPrimary, Integer displayOrder, ProductOptionsEntity option) {
+//        this.product = product;
+//        this.url = url;
+//        this.altText = altText;
+//        this.isPrimary = isPrimary != null ? isPrimary : false;
+//        this.displayOrder = displayOrder != null ? displayOrder : 0;
+//        this.option = option;
+//    }
 
     public void update(String url, String altText, Boolean isPrimary,
                     Integer displayOrder, ProductOptionsEntity option) {

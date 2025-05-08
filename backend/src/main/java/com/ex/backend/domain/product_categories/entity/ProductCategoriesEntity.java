@@ -4,14 +4,14 @@ import com.ex.backend.common.BaseEntity;
 import com.ex.backend.domain.categories.entity.CategoriesEntity;
 import com.ex.backend.domain.products.entity.ProductsEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+@Builder
 @Entity
 @Table(name = "product_categories")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class ProductCategoriesEntity extends BaseEntity {
 
     @Id
@@ -29,11 +29,11 @@ public class ProductCategoriesEntity extends BaseEntity {
     @Column(name = "is_primary", columnDefinition = "BOOLEAN DEFAULT FALSE")
     private Boolean isPrimary;
 
-    public ProductCategoriesEntity(ProductsEntity product, CategoriesEntity category, Boolean isPrimary) {
-        this.product = product;
-        this.category = category;
-        this.isPrimary = isPrimary != null ? isPrimary : false;
-    }
+//    public ProductCategoriesEntity(ProductsEntity product, CategoriesEntity category, Boolean isPrimary) {
+//        this.product = product;
+//        this.category = category;
+//        this.isPrimary = isPrimary != null ? isPrimary : false;
+//    }
 
     public void update(CategoriesEntity category, Boolean isPrimary) {
         this.category = category;
