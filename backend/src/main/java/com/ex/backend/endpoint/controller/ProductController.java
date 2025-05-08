@@ -1,7 +1,9 @@
 package com.ex.backend.endpoint.controller;
 
 import com.ex.backend.common.ApiResponse;
+import com.ex.backend.dto.products.req.PageResponse;
 import com.ex.backend.dto.products.req.ProductRequestDto;
+import com.ex.backend.dto.products.res.ProductListResponseDto;
 import com.ex.backend.dto.products.res.ProductResponseDto;
 import com.ex.backend.service.products.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -40,7 +42,7 @@ public class ProductController {
             @RequestParam(required = false) Boolean inStock,
             @RequestParam(required = false) String search) {
 
-        Object result = productService.getProducts(
+        PageResponse<ProductListResponseDto> result = productService.getProducts(
                 page, perPage, sort, status, minPrice, maxPrice,
                 category, seller, brand, inStock, search);
 
