@@ -26,6 +26,7 @@ import com.ex.backend.domain.tags.entity.TagsEntity;
 import com.ex.backend.domain.tags.repository.TagsEntityRepository;
 import com.ex.backend.dto.products.req.PageResponse;
 import com.ex.backend.dto.products.req.ProductRequestDto;
+import com.ex.backend.dto.products.res.ProductDetailResponseDto;
 import com.ex.backend.dto.products.res.ProductListResponseDto;
 import com.ex.backend.dto.products.res.ProductResponseDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -442,6 +443,15 @@ public class ProductService {
     private boolean isInStock(ProductsEntity product) {
         // 실제 구현에서는 모든 옵션의 재고 확인
         return productOptionsRepository.countByOptionGroupProductAndStockGreaterThan(product, 0) > 0;
+    }
+
+    @Transactional(readOnly = true)
+    public ProductDetailResponseDto getProductById(Long id) {
+        ProductsEntity product = productsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("상품 + id: "  + id + "에 해당하는 상품이 존재하지 않습니다."));
+
+        // 상품 관련 정보들을 모두 조회하여 응답 DTO로 변환
+        return ProductDetailResponseDto.fromEntity(product);
     }
 
 

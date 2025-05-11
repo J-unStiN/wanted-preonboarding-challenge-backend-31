@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class CategoryController {
 
-    private final CategoryService categoryService;
+//    private final CategoryService categoryService;
 
     @GetMapping
     public ResponseEntity<ApiResponse<Object>> getCategories(
             @RequestParam(required = false) Integer level) {
-        Object categories = categoryService.getCategories(level);
+//        Object categories = categoryService.getCategories(level);
+        Object categories = null;
         return ResponseEntity.ok(ApiResponse.success(categories, "카테고리 목록을 성공적으로 조회했습니다."));
     }
 
@@ -27,7 +28,8 @@ public class CategoryController {
             @RequestParam(defaultValue = "created_at:desc") String sort,
             @RequestParam(defaultValue = "true") boolean includeSubcategories) {
 
-        Object result = categoryService.getCategoryProducts(id, page, perPage, sort, includeSubcategories);
+//        Object result = categoryService.getCategoryProducts(id, page, perPage, sort, includeSubcategories);
+        Object result = null;
         return ResponseEntity.ok(ApiResponse.success(result, "카테고리 상품 목록을 성공적으로 조회했습니다."));
     }
 

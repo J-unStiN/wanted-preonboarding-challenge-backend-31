@@ -50,8 +50,8 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<Object>> getProduct(@PathVariable Long id) {
-        Object product = productService.getProductById(id);
+    public ResponseEntity<ApiResponse<ProductDetailResponseDto>> getProduct(@PathVariable Long id) {
+        ProductDetailResponseDto product = productService.getProductById(id);
         return ResponseEntity.ok(ApiResponse.success(product, "상품 상세 정보를 성공적으로 조회했습니다."));
     }
 
